@@ -6,7 +6,9 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: true }));
+const port = process.env.PORT;
+console.log(port);
 
 const stripeInstance = stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -34,4 +36,6 @@ app.post("/payment/create", async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log("Server running on http://localhost:3000"));
+app.listen(port, () =>
+  console.log(`Server running on port ${process.env.PORT}`)
+);
