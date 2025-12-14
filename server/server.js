@@ -11,7 +11,7 @@ app.use(cors({ origin: "http://localhost:5173" }));
 const stripeInstance = stripe(process.env.STRIPE_SECRET_KEY);
 
 app.get("/", (req, res) => {
-  res.status(200).send("Hello from Amazon Backend");
+  res.status(200).json({ message: "hello from amazon" });
 });
 
 app.post("/payment/create", async (req, res) => {
